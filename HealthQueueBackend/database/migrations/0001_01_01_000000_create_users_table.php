@@ -20,9 +20,7 @@ return new class extends Migration
             $table->string('contact');
             $table->foreignId('role_id');
             $table->string('gender');
-
             $table->string('password');
-          
             $table->timestamps();
         });
 

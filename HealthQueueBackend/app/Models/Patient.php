@@ -14,10 +14,16 @@ class Patient extends Model
         'blood',
         'emergency_contact_name',
         'emergency_contact_number',
- 
         'medical_history',
         
     ];
+     public function  casts():array{
+       return [ 
+        'data_of_birth' => 'date',
+        
+        
+        ];
+    }
     public function user(){
         return $this->belongsTo(User::class,'patient_id');
     }

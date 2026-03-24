@@ -13,15 +13,14 @@ return new class extends Migration
     {
         Schema::create('appointments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('patient_id')->constrained('patients');
-            $table->foreignId('doctor_id')->constrained('doctors');
+            $table->foreignId('patient_id')->constrained('patients')->onDelete('cascade');
+            $table->foreignId('doctor_id')->constrained('doctors')->onDelete('cascade');
             $table->date('appointment_date');
             $table->time('appointment_time');
             $table->string('reason');
             $table->unsignedInteger('token_number');
             $table->string('status');
             $table->decimal('consultation_fee',8,2);
-         
             $table->string('notes');
             $table->timestamps();
         });

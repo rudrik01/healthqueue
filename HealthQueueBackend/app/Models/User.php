@@ -10,6 +10,7 @@ use Illuminate\Notifications\Notifiable;
 use App\Models\Patient;
 use App\Models\Doctor;
 use App\Models\Role;
+
 class User extends Authenticatable
 {
 
@@ -20,8 +21,8 @@ class User extends Authenticatable
         'gender',
         'role_id',
         'password',
-        
-        
+
+
 
     ];
     /** @use HasFactory<UserFactory> */
@@ -39,13 +40,31 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-    public function doctor(){
-        return $this->hasOne(Doctor::class,'doctor_id');
+    /**
+     * Get the doctor associated with this model.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function doctor()
+    {
+        return $this->hasOne(Doctor::class, 'doctor_id');
     }
-       public function patient(){
-        return $this->hasOne(Patient::class,'patient_id');
+    /**
+     * Get the patient associated with this model.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function patient()
+    {
+        return $this->hasOne(Patient::class, 'patient_id');
     }
-    public function role(){
-        return $this->belongsTo(Role::class,'role_id');
+    /**
+     * Get the role associated with this model.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\belongsTo
+     */
+    public function role()
+    {
+        return $this->belongsTo(Role::class, 'role_id');
     }
 }

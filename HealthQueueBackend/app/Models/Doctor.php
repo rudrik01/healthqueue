@@ -19,6 +19,19 @@ class Doctor extends Model
         'start_time',
         'end_time',
     ];
+    /**
+     * Get the attributes that should be cast.
+     *
+     * @return array<string, string>
+     */
+    public function  casts():array{
+       return [ 
+        'experience' => 'integer',
+        'consultation_fee' => 'decimal:2',
+        'start_time' => 'datetime:H:i',
+        'end_time' => 'datetime:H:i',
+        ];
+    }
     public function user(){
         return $this->belongsTo(User::class,'doctor_id');
     }
